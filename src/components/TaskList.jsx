@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useTodoStore } from '../store/todoStore';
 import TaskItem from './TaskItem';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const SectionTitle = styled.h2`
   font-size: 1.1rem;
@@ -15,9 +16,15 @@ const TaskListContainer = styled.div`
 const EmptyState = styled.div`
 color: #bbb; 
 text-align: center; 
-margin: 48px 0; 
+margin: 0; 
 font-size: 1.2rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 `;
+
+
 
 
 const TaskList = () => {
@@ -29,7 +36,14 @@ const TaskList = () => {
     <TaskListContainer>
       {tasks.length === 0 ? (
         <EmptyState>
-          No tasks yet. Add your first task! 🎉
+          <DotLottieReact
+            autoplay
+            loop
+            src="https://lottie.host/89ccd181-963b-4dfd-a0c9-be71032ed21c/huOeFAm1JL.lottie"
+            style={{ height: 380, width: 380, marginBottom: 16, filter: 'grayscale(1)' }}
+            aria-label="No tasks animation"
+          />
+          No tasks yet. Add your first task!
         </EmptyState>
       ) : (
         <>

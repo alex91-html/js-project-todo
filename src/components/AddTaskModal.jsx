@@ -143,8 +143,8 @@ const AddTaskModal = ({ onClose }) => {
             <option value="Freelance">Freelance</option>
             <option value="Design">Design</option>
             <option value="Shopping List">Shopping List</option>
-            <option value="Shopping List">Personal</option>
-            <option value="Shopping List">Health</option>
+            <option value="Personal">Personal</option>
+            <option value="Health">Health</option>
           </Select>
           <ButtonRow>
             <CancelButton type="button" onClick={onClose}>

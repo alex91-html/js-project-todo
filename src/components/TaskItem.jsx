@@ -29,7 +29,7 @@ const Title = styled.div`
 const DeleteButton = styled.button`
   background: none;
   border: none;
-  color: #bdbdbd; /* grey by default */
+  color: #bdbdbd;
   font-size: 1.3rem;
   margin-left: 8px;
   cursor: pointer;
@@ -47,8 +47,21 @@ const DeleteButton = styled.button`
 const Category = styled.div`
   font-size: 0.9rem;
   color: #b5b5b5;
+  padding: 2px 6px;
+  border-radius: 8px;
   margin-top: 2px;
+  background: ${({ color }) => color || '#eee'};
 `;
+
+const categoryColors = {
+  General: '#ffe0ec',
+  Finance: '#e0f7fa',
+  Freelance: '#e0ffe0',
+  Design: '#e0e7ff',
+  'Shopping List': '#fff9e0',
+  Personal: '#f3e0ff',
+  Health: '#e0fff4',
+};
 
 const TaskItem = ({ task }) => {
   const toggleTask = useTodoStore((s) => s.toggleTask);
@@ -64,7 +77,7 @@ const TaskItem = ({ task }) => {
       />
       <TaskInfo>
         <Title completed={task.completed}>{task.title}</Title>
-        <Category>{task.category}</Category>
+        <Category color={categoryColors[task.category]}>{task.category}</Category>
         {task.createdAt && (
           <div style={{ fontSize: '0.8rem', color: '#b5b5b5', marginTop: '2px' }}>
             {format(new Date(task.createdAt), 'd MMM yyyy, HH:mm')}

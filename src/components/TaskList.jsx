@@ -24,9 +24,6 @@ align-items: center;
 justify-content: center;
 `;
 
-
-
-
 const TaskList = () => {
   const tasks = useTodoStore((s) => s.tasks);
   const todos = tasks.filter((t) => !t.completed);
@@ -40,7 +37,7 @@ const TaskList = () => {
             autoplay
             loop
             src="https://lottie.host/89ccd181-963b-4dfd-a0c9-be71032ed21c/huOeFAm1JL.lottie"
-            style={{ height: 380, width: 380, marginBottom: 16, filter: 'grayscale(1)' }}
+            style={{ height: 300, width: 300, marginBottom: 16, filter: 'grayscale(1)' }}
             aria-label="No tasks animation"
           />
           No tasks yet. Add your first task!

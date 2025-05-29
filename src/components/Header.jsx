@@ -6,8 +6,15 @@ import { useTodoStore } from '../store/todoStore';
 const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
-  padding: 24px 20px 0 20px;
+  padding: 20px;
   background: #fff;
+
+  @media (min-width: 1024px) {
+    padding: 40px;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
 `;
 
 const DateText = styled.div`

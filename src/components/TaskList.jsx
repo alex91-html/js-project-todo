@@ -19,18 +19,25 @@ const TaskList = () => {
 
   return (
     <TaskListContainer>
-      <SectionTitle>Todo</SectionTitle>
-      {todos.length === 0 ? (
-        <div>No tasks to do. 🎉</div>
+      {tasks.length === 0 ? (
+        <div style={{ color: '#bbb', textAlign: 'center', margin: '48px 0', fontSize: '1.2rem' }}>
+          No tasks yet. Add your first task! 🎉
+        </div>
       ) : (
-        todos.map((task) => <TaskItem key={task.id} task={task} />)
-      )}
-
-      <SectionTitle>Done</SectionTitle>
-      {dones.length === 0 ? (
-        <div>No completed tasks yet.</div>
-      ) : (
-        dones.map((task) => <TaskItem key={task.id} task={task} />)
+        <>
+          {todos.length > 0 && (
+            <>
+              <SectionTitle>Todo</SectionTitle>
+              {todos.map((task) => <TaskItem key={task.id} task={task} />)}
+            </>
+          )}
+          {dones.length > 0 && (
+            <>
+              <SectionTitle>Done</SectionTitle>
+              {dones.map((task) => <TaskItem key={task.id} task={task} />)}
+            </>
+          )}
+        </>
       )}
     </TaskListContainer>
   );

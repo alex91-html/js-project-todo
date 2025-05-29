@@ -12,6 +12,14 @@ const TaskListContainer = styled.div`
   padding: 0 20px;
 `;
 
+const EmptyState = styled.div`
+color: #bbb; 
+text-align: center; 
+margin: 48px 0; 
+font-size: 1.2rem;
+`;
+
+
 const TaskList = () => {
   const tasks = useTodoStore((s) => s.tasks);
   const todos = tasks.filter((t) => !t.completed);
@@ -20,9 +28,9 @@ const TaskList = () => {
   return (
     <TaskListContainer>
       {tasks.length === 0 ? (
-        <div style={{ color: '#bbb', textAlign: 'center', margin: '48px 0', fontSize: '1.2rem' }}>
+        <EmptyState>
           No tasks yet. Add your first task! 🎉
-        </div>
+        </EmptyState>
       ) : (
         <>
           {todos.length > 0 && (

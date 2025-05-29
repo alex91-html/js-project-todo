@@ -10,6 +10,16 @@ const ModalOverlay = styled.div`
   align-items: flex-end;
   justify-content: center;
   z-index: 200;
+
+   @media (min-width: 1024px) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 32px;
+
+  }
 `;
 
 const Modal = styled.div`
@@ -20,6 +30,15 @@ const Modal = styled.div`
   padding: 32px 24px 24px 24px;
   box-shadow: 0 -2px 24px rgba(0,0,0,0.08);
   margin-bottom: 0;
+
+@media (min-width: 1024px) {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 32px;
+  padding: 48px 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
 `;
 
 const ModalBar = styled.div`

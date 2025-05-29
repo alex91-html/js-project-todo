@@ -21,6 +21,13 @@ const AddButton = styled.button`
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   cursor: pointer;
   z-index: 100;
+  
+  @media (min-width: 1024px) {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+  }
+
 `;
 
 const AddTask = () => {

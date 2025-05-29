@@ -14,10 +14,12 @@ export const MainContainer = styled.div`
 
   @media (min-width: 1024px) {
     max-width: 600px;
+    min-height: 90vh;
     margin: 40px auto;
     border-radius: 32px;
     background: #fff;
     box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     padding: 48px 0;
+    position: relative;
   }
 `;

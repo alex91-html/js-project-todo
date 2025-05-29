@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useTodoStore } from '../store/todoStore';
 import { FiTrash2 } from 'react-icons/fi';
+import { format } from 'date-fns';
 
 const TaskRow = styled.div`
   display: flex;

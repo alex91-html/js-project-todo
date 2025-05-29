@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useTodoStore } from '../store/todoStore';
+import { FiTrash2 } from 'react-icons/fi';
 
 const TaskRow = styled.div`
   display: flex;
@@ -27,11 +28,19 @@ const Title = styled.div`
 const DeleteButton = styled.button`
   background: none;
   border: none;
-  color: #e57373;
+  color: #bdbdbd; /* grey by default */
   font-size: 1.3rem;
   margin-left: 8px;
   cursor: pointer;
   align-self: flex-start;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+
+  &:hover,
+  &:focus {
+    color: #e57373; /* red on hover/focus */
+  }
 `;
 
 const Category = styled.div`
@@ -57,7 +66,7 @@ const TaskItem = ({ task }) => {
         <Category>{task.category}</Category>
       </TaskInfo>
       <DeleteButton aria-label="Delete task" onClick={() => removeTask(task.id)}>
-        ×
+        <FiTrash2 size={20} />
       </DeleteButton>
     </TaskRow>
   );

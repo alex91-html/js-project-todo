@@ -64,6 +64,11 @@ const TaskItem = ({ task }) => {
       <TaskInfo>
         <Title completed={task.completed}>{task.title}</Title>
         <Category>{task.category}</Category>
+        {task.createdAt && (
+          <div style={{ fontSize: '0.8rem', color: '#b5b5b5', marginTop: '2px' }}>
+            {format(new Date(task.createdAt), 'd MMM yyyy, HH:mm')}
+          </div>
+        )}
       </TaskInfo>
       <DeleteButton aria-label="Delete task" onClick={() => removeTask(task.id)}>
         <FiTrash2 size={20} />

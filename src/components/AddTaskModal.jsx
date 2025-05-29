@@ -106,6 +106,7 @@ const AddTaskModal = ({ onClose }) => {
         title: value,
         category,
         completed: false,
+        createdAt: new Date().toISOString(),
       });
       setValue('');
       setCategory('General');

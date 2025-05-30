@@ -1,10 +1,10 @@
-# links
+## links
 - github: https://github.com/alex91-html/js-project-todo
 - netlify: https://alextodo-app.netlify.app/
 
 
-## Project Structure
 <!-- 
+## Project Structure
 src/
 ├── App.js                         # Main App component with routing   
 ├── store/

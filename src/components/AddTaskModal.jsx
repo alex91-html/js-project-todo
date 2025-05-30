@@ -98,6 +98,13 @@ const CancelButton = styled.button`
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
+
+    &:hover {
+    background:#e57373;
+    color: #fff;
+  }
+
+
 `;
 
 const SubmitButton = styled.button`
@@ -110,6 +117,11 @@ const SubmitButton = styled.button`
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
+
+  &:hover {
+    background: #40405c;;
+  }
+
 `;
 
 const AddTaskModal = ({ onClose }) => {

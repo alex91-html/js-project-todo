@@ -24,14 +24,14 @@ const TaskInfo = styled.div`
 const Title = styled.div`
   font-size: 1.1rem;
   color: ${({ completed, theme }) =>
-    completed ? '#aaa' : theme === 'dark' ? '#fafafa' : '#222'};
+    completed ? '#6a6a6a' : theme === 'dark' ? '#fafafa' : '#222'};
   text-decoration: ${({ completed }) => (completed ? 'line-through' : 'none')};
 `;
 
 const DeleteButton = styled.button`
   background: none;
   border: none;
-  color: #bdbdbd;
+  color: #6a6a6a;
   font-size: 1.3rem;
   margin-left: 8px;
   cursor: pointer;
@@ -48,7 +48,7 @@ const DeleteButton = styled.button`
 
 const Category = styled.div`
   font-size: 0.9rem;
-    color: ${({ theme }) => theme === 'dark' ? '#e0e0e0' : '#b5b5b5'};
+    color: ${({ theme }) => theme === 'dark' ? '#e0e0e0' : '#6a6a6a'};
   padding: 2px 6px;
   border-radius: 8px;
   margin-top: 2px;
@@ -71,7 +71,7 @@ const categoryColors = {
 
 const Timestamp = styled.div`
   font-size: 0.8rem;
-  color: #b5b5b5;
+  color: #6a6a6a;
   margin-top: 2px;
 `;
 

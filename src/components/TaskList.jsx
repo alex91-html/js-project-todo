@@ -8,6 +8,10 @@ const SectionTitle = styled.h2`
   margin: 24px 0 8px 0;
 `;
 
+const TaskListContainer = styled.div`
+  width: 100%;
+`;
+
 const TaskListContent = styled.div`
   padding: 0 20px;
 `;

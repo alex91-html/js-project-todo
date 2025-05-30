@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Inter', Arial, sans-serif;
-    background: ${({ theme }) => theme === 'dark' ? '#181a1b' : '#fafafa'};
+    background: ${({ theme }) => theme === 'dark' ? '#222' : '#fafafa'};
     color: ${({ theme }) => theme === 'dark' ? '#fafafa' : '#222'};
     font-size: 1rem;
     font-weight: 400;

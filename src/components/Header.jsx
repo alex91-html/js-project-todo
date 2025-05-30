@@ -18,7 +18,7 @@ const HeaderContainer = styled.header`
 
 const DateText = styled.div`
   font-size: 0.95rem;
-  color: #888;
+  color: #6a6a6a;
   margin-top: 12px;
 `;
 
@@ -28,7 +28,7 @@ const DayText = styled.h1`
 `;
 const TaskCount = styled.div`
   font-size: 1rem;
-  color: #888;
+  color:#6a6a6a;
   margin: 8px 0 0 0;
 `;
 

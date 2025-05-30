@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useTodoStore } from '../store/todoStore';
+import { useThemeStore } from '../store/themeStore';
+
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -23,7 +25,8 @@ const ModalOverlay = styled.div`
 `;
 
 const Modal = styled.div`
-  background: #fff;
+  background: ${({ theme }) => theme === 'dark' ? '#23272f' : '#fff'};
+  color: ${({ theme }) => theme === 'dark' ? '#fafafa' : '#222'};
   width: 100%;
   max-width: 600px;
   border-radius: 32px 32px 0 0;
@@ -50,6 +53,7 @@ const ModalBar = styled.div`
 `;
 
 const ModalTitle = styled.h2`
+  color: ${({ theme }) => theme === 'dark' ? '#fafafa' : '#222'};
   text-align: center;
   font-size: 2rem;
   margin: 0 0 24px 0;
@@ -121,6 +125,8 @@ const AddTaskModal = ({ onClose }) => {
   const [value, setValue] = useState('');
   const [category, setCategory] = useState('General');
   const addTask = useTodoStore((s) => s.addTask);
+  const theme = useThemeStore((s) => s.theme);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -144,9 +150,9 @@ const AddTaskModal = ({ onClose }) => {
 
   return (
     <ModalOverlay onClick={handleOverlayClick}>
-      <Modal>
+      <Modal theme={theme}>
         <ModalBar />
-        <ModalTitle>Add New Task</ModalTitle>
+        <ModalTitle theme={theme}>Add New Task</ModalTitle>
         <form onSubmit={handleSubmit}>
           <Input
             type="text"

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useTodoStore } from '../store/todoStore';
+import { useThemeStore } from '../store/themeStore';
 import { FiTrash2 } from 'react-icons/fi';
 import { format } from 'date-fns';
 
@@ -22,7 +23,8 @@ const TaskInfo = styled.div`
 
 const Title = styled.div`
   font-size: 1.1rem;
-  color: ${({ completed }) => (completed ? '#aaa' : '#222')};
+  color: ${({ completed, theme }) =>
+    completed ? '#aaa' : theme === 'dark' ? '#fafafa' : '#222'};
   text-decoration: ${({ completed }) => (completed ? 'line-through' : 'none')};
 `;
 
@@ -46,11 +48,14 @@ const DeleteButton = styled.button`
 
 const Category = styled.div`
   font-size: 0.9rem;
-  color: #b5b5b5;
+    color: ${({ theme }) => theme === 'dark' ? '#e0e0e0' : '#b5b5b5'};
   padding: 2px 6px;
   border-radius: 8px;
   margin-top: 2px;
-  background: ${({ color }) => color || '#eee'};
+   background: ${({ color, theme }) =>
+    theme === 'dark'
+      ? (color ? `${color}22` : '#333')
+      : (color || '#eee')};
   display: inline-block;
 `;
 
@@ -73,6 +78,8 @@ const Timestamp = styled.div`
 const TaskItem = ({ task }) => {
   const toggleTask = useTodoStore((s) => s.toggleTask);
   const removeTask = useTodoStore((s) => s.removeTask);
+  const theme = useThemeStore((s) => s.theme);
+
 
   return (
     <TaskRow>
@@ -83,8 +90,10 @@ const TaskItem = ({ task }) => {
         aria-label={task.title}
       />
       <TaskInfo>
-        <Title completed={task.completed}>{task.title}</Title>
-        <Category color={categoryColors[task.category]}>{task.category}</Category>
+        <Title completed={task.completed} theme={theme}>{task.title}</Title>
+        <Category color={categoryColors[task.category]} theme={theme}>
+          {task.category}
+        </Category>
         {task.createdAt && (
           <Timestamp>
             {format(new Date(task.createdAt), 'd MMM yyyy, HH:mm')}

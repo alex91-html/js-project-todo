@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { format } from 'date-fns';
 import { useTodoStore } from '../store/todoStore';
-
+import { useThemeStore } from '../store/themeStore';
 
 const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  background: #fff;
+  background: ${({ theme }) => theme === 'dark' ? '#23272f' : '#fff'};
 
   @media (min-width: 1024px) {
     border-top-left-radius: 32px;
@@ -32,13 +32,52 @@ const TaskCount = styled.div`
   margin: 8px 0 0 0;
 `;
 
+const ThemeSwitch = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 28px;
+  background: ${({ theme }) => theme === 'dark' ? '#222' : '#eee'};
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  transition: background 0.2s;
+  outline: none;
+  z-index: 10;
+
+  &:focus {
+    box-shadow: 0 0 0 2px #8882;
+  }
+`;
+
+const SwitchKnob = styled.span`
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme === 'dark' ? '#ffe066' : '#333'};
+  transform: ${({ theme }) => theme === 'dark' ? 'translateX(20px)' : 'translateX(0)'};
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+`;
+
 const Header = () => {
   const now = new Date();
   const tasks = useTodoStore((s) => s.tasks);
   const uncompleted = tasks.filter(t => !t.completed).length;
+  const theme = useThemeStore((s) => s.theme);
+  const toggleTheme = useThemeStore((s) => s.toggleTheme);
+
 
   return (
-    <HeaderContainer>
+    <HeaderContainer theme={theme}>
+      <ThemeSwitch onClick={toggleTheme} theme={theme} aria-label="Toggle dark/light mode">
+        <SwitchKnob theme={theme} />
+      </ThemeSwitch>
       <DateText>{format(now, "do MMM yyyy")}</DateText>
       <DayText>{format(now, "EEEE")}</DayText>
       <TaskCount>{uncompleted} tasks</TaskCount>

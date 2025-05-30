@@ -72,6 +72,14 @@ const Header = () => {
   const theme = useThemeStore((s) => s.theme);
   const toggleTheme = useThemeStore((s) => s.toggleTheme);
 
+  let taskCountText = '';
+  if (uncompleted === 0) {
+    taskCountText = '0 tasks';
+  } else if (uncompleted === 1) {
+    taskCountText = '1 task remaining';
+  } else {
+    taskCountText = `${uncompleted} tasks remaining`;
+  }
 
   return (
     <HeaderContainer theme={theme}>
@@ -80,7 +88,7 @@ const Header = () => {
       </ThemeSwitch>
       <DateText>{format(now, "do MMM yyyy")}</DateText>
       <DayText>{format(now, "EEEE")}</DayText>
-      <TaskCount>{uncompleted} tasks</TaskCount>
+      <TaskCount>{taskCountText}</TaskCount>
     </HeaderContainer>
   );
 };

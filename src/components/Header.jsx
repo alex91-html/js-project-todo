@@ -10,7 +10,6 @@ const HeaderContainer = styled.header`
   background: #fff;
 
   @media (min-width: 1024px) {
-    padding: 40px;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
@@ -24,8 +23,6 @@ const DateText = styled.div`
 `;
 
 const DayText = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 700;
   margin: 0;
   margin-top: 2px;
 `;
@@ -34,7 +31,6 @@ const TaskCount = styled.div`
   color: #888;
   margin: 8px 0 0 0;
 `;
-
 
 const Header = () => {
   const now = new Date();
@@ -45,7 +41,7 @@ const Header = () => {
     <HeaderContainer>
       <DateText>{format(now, "do MMM yyyy")}</DateText>
       <DayText>{format(now, "EEEE")}</DayText>
-      <TaskCount>{uncompleted} tasks remaining</TaskCount>
+      <TaskCount>{uncompleted} tasks</TaskCount>
     </HeaderContainer>
   );
 };

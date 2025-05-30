@@ -51,8 +51,7 @@ const ModalBar = styled.div`
 
 const ModalTitle = styled.h2`
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 2rem;
   margin: 0 0 24px 0;
 `;
 
@@ -95,9 +94,6 @@ const CancelButton = styled.button`
   border: none;
   background: #f7f8fa;
   color: #6b7280;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
 
     &:hover {
     background:#e57373;
@@ -114,9 +110,6 @@ const SubmitButton = styled.button`
   border: none;
   background: #888;
   color: #fff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
 
   &:hover {
     background: #40405c;;

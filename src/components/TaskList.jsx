@@ -4,8 +4,6 @@ import TaskItem from './TaskItem';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const SectionTitle = styled.h2`
-  font-size: 1.1rem;
-  font-weight: 600;
   margin: 24px 0 8px 0;
 `;
 

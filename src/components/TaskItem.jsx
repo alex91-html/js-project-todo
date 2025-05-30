@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 
 const TaskRow = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding: 12px 0;
   border-bottom: 1px solid #eee;
 `;
@@ -33,7 +33,7 @@ const DeleteButton = styled.button`
   font-size: 1.3rem;
   margin-left: 8px;
   cursor: pointer;
-  align-self: flex-start;
+  align-self: center;
   display: flex;
   align-items: center;
   transition: color 0.2s;
@@ -51,6 +51,7 @@ const Category = styled.div`
   border-radius: 8px;
   margin-top: 2px;
   background: ${({ color }) => color || '#eee'};
+  display: inline-block;
 `;
 
 const categoryColors = {

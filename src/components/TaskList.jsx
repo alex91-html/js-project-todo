@@ -3,6 +3,7 @@ import { useTodoStore } from '../store/todoStore';
 import { useThemeStore } from '../store/themeStore';
 import TaskItem from './TaskItem';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { useState } from 'react';
 
 const SectionTitle = styled.h2`
   margin: 24px 0 8px 0;
@@ -33,16 +34,51 @@ const DoneSection = styled.div`
   margin-top: 32px;
 `;
 
+const ShowAllCategoriesButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  margin-top:  16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 16px;
+  background: ${({ theme }) => theme === 'dark' ? '#23272f' : '#111'};
+  color: ${({ theme }) => theme === 'dark' ? '#ffe066' : '#fff'};
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.18s, transform 0.18s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+  &:hover {
+    background: ${({ theme }) => theme === 'dark' ? '#333' : '#40405c'};
+    color: #fff;
+  }
+`;
+
 const TaskList = () => {
+  const [categoryFilter, setCategoryFilter] = useState(null);
   const tasks = useTodoStore((s) => s.tasks);
   const theme = useThemeStore((s) => s.theme);
-  const todos = tasks.filter((t) => !t.completed);
-  const dones = tasks.filter((t) => t.completed);
+  const filteredTasks = categoryFilter
+    ? tasks.filter((t) => t.category === categoryFilter)
+    : tasks;
+
+  const todos = filteredTasks.filter((t) => !t.completed);
+  const dones = filteredTasks.filter((t) => t.completed);
 
   return (
     <TaskListContainer>
       <TaskListContent>
-        {tasks.length === 0 ? (
+        {categoryFilter && (
+          <ShowAllCategoriesButton
+            onClick={() => setCategoryFilter(null)}
+          >
+            Show all categories
+          </ShowAllCategoriesButton>
+        )}
+        {filteredTasks.length === 0 ? (
           <EmptyState>
             <DotLottieReact
               autoplay
@@ -58,7 +94,13 @@ const TaskList = () => {
             {todos.length > 0 && (
               <>
                 <SectionTitle>Todo</SectionTitle>
-                {todos.map((task) => <TaskItem key={task.id} task={task} />)}
+                {todos.map((task) => (
+                  <TaskItem
+                    key={task.id}
+                    task={task}
+                    onCategoryClick={setCategoryFilter}
+                  />
+                ))}
               </>
             )}
           </>
@@ -68,7 +110,13 @@ const TaskList = () => {
         <DoneSection theme={theme}>
           <TaskListContent>
             <SectionTitle>Done</SectionTitle>
-            {dones.map((task) => <TaskItem key={task.id} task={task} />)}
+            {dones.map((task) => (
+              <TaskItem
+                key={task.id}
+                task={task}
+                onCategoryClick={setCategoryFilter}
+              />
+            ))}
           </TaskListContent>
         </DoneSection>
       )}

@@ -56,7 +56,15 @@ const Category = styled.div`
     theme === 'dark'
       ? (color ? `${color}22` : '#333')
       : (color || '#eee')};
+  cursor: pointer;
+  text-decoration: underline;
   display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+     background: #40405c;
+    color: #fff;
+  }
 `;
 
 const categoryColors = {
@@ -75,7 +83,7 @@ const Timestamp = styled.div`
   margin-top: 2px;
 `;
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, onCategoryClick }) => {
   const toggleTask = useTodoStore((s) => s.toggleTask);
   const removeTask = useTodoStore((s) => s.removeTask);
   const theme = useThemeStore((s) => s.theme);
@@ -91,7 +99,11 @@ const TaskItem = ({ task }) => {
       />
       <TaskInfo>
         <Title completed={task.completed} theme={theme}>{task.title}</Title>
-        <Category color={categoryColors[task.category]} theme={theme}>
+        <Category
+          color={categoryColors[task.category]}
+          theme={theme}
+          onClick={() => onCategoryClick && onCategoryClick(task.category)}
+        >
           {task.category}
         </Category>
         {task.createdAt && (

@@ -145,7 +145,6 @@ const AddTaskModal = ({ onClose }) => {
     }
   };
 
-  // Close modal on overlay click or Esc key
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) onClose();
   };

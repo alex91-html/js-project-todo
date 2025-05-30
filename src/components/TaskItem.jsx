@@ -40,7 +40,7 @@ const DeleteButton = styled.button`
 
   &:hover,
   &:focus {
-    color: #e57373; /* red on hover/focus */
+    color: #e57373; 
   }
 `;
 
@@ -63,6 +63,12 @@ const categoryColors = {
   Health: '#e0fff4',
 };
 
+const Timestamp = styled.div`
+  font-size: 0.8rem;
+  color: #b5b5b5;
+  margin-top: 2px;
+`;
+
 const TaskItem = ({ task }) => {
   const toggleTask = useTodoStore((s) => s.toggleTask);
   const removeTask = useTodoStore((s) => s.removeTask);
@@ -79,9 +85,9 @@ const TaskItem = ({ task }) => {
         <Title completed={task.completed}>{task.title}</Title>
         <Category color={categoryColors[task.category]}>{task.category}</Category>
         {task.createdAt && (
-          <div style={{ fontSize: '0.8rem', color: '#b5b5b5', marginTop: '2px' }}>
+          <Timestamp>
             {format(new Date(task.createdAt), 'd MMM yyyy, HH:mm')}
-          </div>
+          </Timestamp>
         )}
       </TaskInfo>
       <DeleteButton aria-label="Delete task" onClick={() => removeTask(task.id)}>
